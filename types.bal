@@ -1,4 +1,3 @@
-
 type Location record {|
     string name;
     string region;
@@ -51,4 +50,74 @@ type Current record {|
 type WetherData record {|
     Location location;
     Current current;
+|};
+
+type External_urls record {|
+    string spotify;
+|};
+
+type ImagesItem record {|
+    string url;
+    int? height;
+    int? width;
+|};
+
+type Images ImagesItem[];
+
+type Owner record {|
+    External_urls external_urls;
+    string href;
+    string id;
+    string 'type;
+    string uri;
+    string display_name;
+|};
+
+type Tracks record {|
+    string href;
+    int total;
+|};
+
+type ItemsItem record {|
+    boolean collaborative;
+    string description;
+    External_urls external_urls;
+    string href;
+    string id;
+    Images images;
+    string name;
+    Owner owner;
+    boolean 'public;
+    string snapshot_id;
+    Tracks tracks;
+    string 'type;
+    string uri;
+    string? primary_color;
+|};
+
+type Playlists record {|
+    string href;
+    int 'limit;
+    string? next;
+    int offset;
+    string? previous;
+    int total;
+    ItemsItem?[] items;
+|};
+
+type SpotifyPlayList record {|
+    Playlists playlists;
+|};
+
+type PlayListInfo record {|
+    string name;
+    string url;
+    string artist;
+|};
+
+type MusicSuggestion record {|
+    string location;
+    string weather;
+    string musicMode;
+    PlayListInfo[] playList;
 |};
